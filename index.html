@@ -77,10 +77,13 @@
 
   /* ---------- Overview ---------- */
   .hero{ position:relative; padding: 44px 4px 36px; overflow:hidden; }
-  .hero svg.net{ position:absolute; right:-60px; top:-40px; width:380px; height:380px; opacity:0.35; pointer-events:none; }
-  .hero svg.net line{ stroke-dasharray:260; stroke-dashoffset:260; animation: draw 1.3s ease forwards .35s; }
-  .hero svg.net circle{ opacity:0; animation: nodeIn .45s ease forwards; }
-  .hero svg.net circle#hub{ animation: nodeIn .45s ease forwards 1.1s, hubPulse 2.4s ease-in-out infinite 1.6s; }
+  .hero-grid{ display:grid; grid-template-columns: 1fr auto; gap:36px; align-items:center; }
+  .hero-photo{ position:relative; width:180px; height:180px; justify-self:end; animation: fadeUp .7s ease .3s both; }
+  .hero-photo svg.net{ position:absolute; inset:-100px; width:380px; height:380px; opacity:0.35; pointer-events:none; }
+  .hero-photo svg.net line{ stroke-dasharray:260; stroke-dashoffset:260; animation: draw 1.3s ease forwards .35s; }
+  .hero-photo svg.net circle{ opacity:0; animation: nodeIn .45s ease forwards; }
+  .hero-photo svg.net circle#hub{ opacity:0; }
+  .headshot{ position:relative; z-index:1; width:100%; height:100%; border-radius:50%; object-fit:cover; display:block; border:3px solid var(--card); box-shadow:var(--shadow); }
   @keyframes draw{ to{ stroke-dashoffset:0; } }
   @keyframes nodeIn{ to{ opacity:1; } }
   @keyframes hubPulse{ 0%,100%{ opacity:1; } 50%{ opacity:0.4; } }
@@ -151,6 +154,10 @@
   .cert-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px; }
   .cert-list li{ font-size:0.84rem; padding:8px 12px; background:var(--card); border:1px solid var(--card-line); border-radius:8px; box-shadow:var(--shadow); }
   @media (max-width:640px){ .edu-cert{ grid-template-columns:1fr; } }
+  @media (max-width:680px){
+    .hero-grid{ grid-template-columns:1fr; }
+    .hero-photo{ justify-self:center; order:-1; margin-bottom:8px; }
+  }
 
   /* ---------- Publications ---------- */
   .pub-list{ display:flex; flex-direction:column; gap:10px; margin-bottom:8px; }
@@ -199,33 +206,40 @@
 
       <section class="panel is-active" data-panel="overview">
         <div class="hero">
-          <svg class="net" viewBox="0 0 380 380" xmlns="http://www.w3.org/2000/svg">
-            <g stroke="#2a4d8f" stroke-width="1" fill="none">
-              <line x1="40" y1="60" x2="200" y2="150"/>
-              <line x1="200" y1="150" x2="330" y2="70"/>
-              <line x1="200" y1="150" x2="130" y2="280"/>
-              <line x1="130" y1="280" x2="280" y2="310"/>
-              <line x1="200" y1="150" x2="320" y2="240"/>
-              <line x1="40" y1="60" x2="130" y2="280"/>
-            </g>
-            <g fill="#2a4d8f">
-              <circle cx="40" cy="60" r="4"/><circle id="hub" cx="200" cy="150" r="6"/>
-              <circle cx="330" cy="70" r="4"/><circle cx="130" cy="280" r="4"/>
-              <circle cx="280" cy="310" r="4"/><circle cx="320" cy="240" r="4"/>
-            </g>
-          </svg>
-          <div class="eyebrow">Technology Operations · Portfolio Strategy</div>
-          <h1 class="display">Aniket Ghonge builds the systems that move a continent's worth of packages.</h1>
-          <p class="role">Senior Supply Chain Manager, Network Strategy &amp; Planning — Amazon · San Diego, CA. Eight years turning logistics complexity — capital, capacity, cross-functional execution — into governed, repeatable systems, and increasingly, into AI-built software that runs those systems end to end.</p>
-          <div class="cta-row">
-            <a class="btn-primary" href="https://slotting-app-cyan.vercel.app" target="_blank" rel="noopener">View a live build ↗</a>
-            <button class="btn-ghost" type="button" data-goto="builds">How I build with AI →</button>
-          </div>
-          <div class="stats-row">
-            <div class="stat"><div class="num">$4B+</div><div class="lbl">CAPITAL PORTFOLIO GOVERNED</div></div>
-            <div class="stat"><div class="num">50M+</div><div class="lbl">DAILY VOLUME NETWORK</div></div>
-            <div class="stat"><div class="num">90%</div><div class="lbl">OPERATIONAL OVERHEAD CUT</div></div>
-            <div class="stat"><div class="num">100+</div><div class="lbl">FACILITIES, NA &amp; UK</div></div>
+          <div class="hero-grid">
+            <div class="hero-text">
+              <div class="eyebrow">Technology Operations · Portfolio Strategy</div>
+              <h1 class="display">Aniket Ghonge builds the systems that move a continent's worth of packages.</h1>
+              <p class="role">Senior Supply Chain Manager, Network Strategy &amp; Planning — Amazon · San Diego, CA. Eight years turning logistics complexity — capital, capacity, cross-functional execution — into governed, repeatable systems, and increasingly, into AI-built software that runs those systems end to end.</p>
+              <div class="cta-row">
+                <a class="btn-primary" href="https://slotting-app-cyan.vercel.app" target="_blank" rel="noopener">View a live build ↗</a>
+                <button class="btn-ghost" type="button" data-goto="builds">How I build with AI →</button>
+              </div>
+              <div class="stats-row">
+                <div class="stat"><div class="num">$4B+</div><div class="lbl">CAPITAL PORTFOLIO GOVERNED</div></div>
+                <div class="stat"><div class="num">50M+</div><div class="lbl">DAILY VOLUME NETWORK</div></div>
+                <div class="stat"><div class="num">90%</div><div class="lbl">OPERATIONAL OVERHEAD CUT</div></div>
+                <div class="stat"><div class="num">100+</div><div class="lbl">FACILITIES, NA &amp; UK</div></div>
+              </div>
+            </div>
+            <div class="hero-photo">
+              <svg class="net" viewBox="0 0 380 380" xmlns="http://www.w3.org/2000/svg">
+                <g stroke="#2a4d8f" stroke-width="1" fill="none">
+                  <line x1="40" y1="60" x2="200" y2="150"/>
+                  <line x1="200" y1="150" x2="330" y2="70"/>
+                  <line x1="200" y1="150" x2="130" y2="280"/>
+                  <line x1="130" y1="280" x2="280" y2="310"/>
+                  <line x1="200" y1="150" x2="320" y2="240"/>
+                  <line x1="40" y1="60" x2="130" y2="280"/>
+                </g>
+                <g fill="#2a4d8f">
+                  <circle cx="40" cy="60" r="4"/><circle id="hub" cx="200" cy="150" r="6"/>
+                  <circle cx="330" cy="70" r="4"/><circle cx="130" cy="280" r="4"/>
+                  <circle cx="280" cy="310" r="4"/><circle cx="320" cy="240" r="4"/>
+                </g>
+              </svg>
+              <img class="headshot" src="headshot.jpg" alt="Aniket Ghonge">
+            </div>
           </div>
         </div>
 
