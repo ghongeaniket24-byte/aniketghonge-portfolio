@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aniket Ghonge — Technology Operations &amp; Portfolio Strategy</title>
+<meta name="description" content="Aniket Ghonge — Technology Operations &amp; Portfolio Strategy leader. Portfolio governance, AI-enabled automation, and systems shipped solo with AI-assisted engineering.">
+<meta property="og:title" content="Aniket Ghonge — Technology Operations &amp; Portfolio Strategy">
+<meta property="og:description" content="Portfolio governance, AI-enabled automation, and systems shipped solo with AI-assisted engineering.">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232a4d8f'/%3E%3Ctext x='32' y='43' font-family='Georgia,serif' font-size='27' font-weight='700' fill='white' text-anchor='middle'%3EAG%3C/text%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#eef1ee; --ink:#141c2e; --accent:#2a4d8f; --accent-soft:#dbe4f2;
+    --muted:#4d564f; --line:rgba(20,28,46,0.14); --card:#ffffff; --card-line:rgba(20,28,46,0.10);
+    --bg-translucent: rgba(238,241,238,0.82); --shadow: 0 1px 2px rgba(20,28,46,0.05), 0 10px 26px -14px rgba(20,28,46,0.16);
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#11151c; --ink:#e9ecf1; --accent:#7ea3e0; --accent-soft:#1c2740; --muted:#9aa2ad; --line:rgba(233,236,241,0.14); --card:#171c26; --card-line:rgba(233,236,241,0.10); --bg-translucent: rgba(17,21,28,0.82); --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 10px 26px -14px rgba(0,0,0,0.5); }
+  }
+  :root[data-theme="dark"]{ --bg:#11151c; --ink:#e9ecf1; --accent:#7ea3e0; --accent-soft:#1c2740; --muted:#9aa2ad; --line:rgba(233,236,241,0.14); --card:#171c26; --card-line:rgba(233,236,241,0.10); --bg-translucent: rgba(17,21,28,0.82); --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 10px 26px -14px rgba(0,0,0,0.5); }
+  :root[data-theme="light"]{ --bg:#eef1ee; --ink:#141c2e; --accent:#2a4d8f; --accent-soft:#dbe4f2; --muted:#4d564f; --line:rgba(20,28,46,0.14); --card:#ffffff; --card-line:rgba(20,28,46,0.10); --bg-translucent: rgba(238,241,238,0.82); --shadow: 0 1px 2px rgba(20,28,46,0.05), 0 10px 26px -14px rgba(20,28,46,0.16); }
+
+  *{ box-sizing:border-box; }
+  html,body{ margin:0; padding:0; }
+  body{
+    background:var(--bg); color:var(--ink);
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  .display{ font-family: Optima, 'Century Gothic', 'Segoe UI', system-ui, sans-serif; }
+  a{ color:inherit; }
+  @media (prefers-reduced-motion: reduce){ *{ animation-duration:0.001s !important; animation-delay:0s !important; transition-duration:0.001s !important; } }
+
+  .site{ max-width: 1040px; margin:0 auto; padding: 0 24px 80px; }
+
+  /* ---------- Top bar / tabs ---------- */
+  .topbar{
+    position:sticky; top:0; z-index:30; display:flex; align-items:center; justify-content:space-between; gap:20px;
+    padding:18px 0; border-bottom:1px solid var(--line); margin-bottom:8px; flex-wrap:wrap;
+    background:var(--bg-translucent); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+  }
+  .brand{ display:flex; align-items:center; gap:10px; font-weight:600; letter-spacing:0.02em; }
+  .brand .mark{ width:30px; height:30px; border-radius:8px; background:var(--accent); color:#fff; display:flex; align-items:center; justify-content:center; font-size:0.78rem; font-weight:700; font-family: Optima, 'Century Gothic', sans-serif; }
+  .topbar-right{ display:flex; align-items:center; gap:18px; flex-wrap:wrap; }
+  .tabs{ position:relative; display:flex; gap:4px; }
+  .tab{
+    appearance:none; background:none; border:none; cursor:pointer; color:var(--muted);
+    font-family:inherit; font-size:0.86rem; padding:9px 13px; border-radius:8px; position:relative; z-index:1;
+    transition: color 0.25s ease;
+  }
+  .tab:hover{ color:var(--ink); }
+  .tab.active{ color:var(--ink); font-weight:600; }
+  .tab:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; }
+  .tab-indicator{ position:absolute; bottom:0; height:2px; background:var(--accent); border-radius:2px; transition: transform 0.45s cubic-bezier(.22,.61,.36,1), width 0.45s cubic-bezier(.22,.61,.36,1); left:0; width:0; }
+  .resume-btn{ font-size:0.82rem; font-weight:600; padding:8px 14px; border-radius:8px; border:1px solid var(--card-line); text-decoration:none; color:var(--ink); transition: border-color .2s ease, background .2s ease; white-space:nowrap; }
+  .resume-btn:hover{ border-color:var(--accent); background:var(--accent-soft); }
+
+  /* ---------- Stage / 3D transition ---------- */
+  .stage-wrap{ perspective: 2000px; }
+  .stage{ position:relative; transition: height 0.5s cubic-bezier(.22,.61,.36,1); }
+  .panel{
+    display:none; opacity:1; transform:none; transform-style:preserve-3d; backface-visibility:hidden;
+    transition: transform 0.55s cubic-bezier(.22,.61,.36,1), opacity 0.4s ease;
+    will-change: transform, opacity;
+  }
+  .panel.is-active{ display:block; position:relative; }
+  .panel.is-flowing{ display:block; position:absolute; inset:0; }
+  .enter-right{ opacity:0; transform: rotateY(-9deg) translateX(30px) translateZ(-90px); transition:none; }
+  .enter-left{ opacity:0; transform: rotateY(9deg) translateX(-30px) translateZ(-90px); transition:none; }
+  .exit-left{ opacity:0; transform: rotateY(9deg) translateX(-30px) translateZ(-90px); }
+  .exit-right{ opacity:0; transform: rotateY(-9deg) translateX(30px) translateZ(-90px); }
+  @media (prefers-reduced-motion: reduce){
+    .panel{ transition: opacity 0.2s ease; }
+    .enter-right,.enter-left,.exit-left,.exit-right{ transform:none; }
+  }
+
+  /* ---------- Overview ---------- */
+  .hero{ position:relative; padding: 44px 4px 36px; overflow:hidden; }
+  .hero svg.net{ position:absolute; right:-60px; top:-40px; width:380px; height:380px; opacity:0.35; pointer-events:none; }
+  .hero svg.net line{ stroke-dasharray:260; stroke-dashoffset:260; animation: draw 1.3s ease forwards .35s; }
+  .hero svg.net circle{ opacity:0; animation: nodeIn .45s ease forwards; }
+  .hero svg.net circle#hub{ animation: nodeIn .45s ease forwards 1.1s, hubPulse 2.4s ease-in-out infinite 1.6s; }
+  @keyframes draw{ to{ stroke-dashoffset:0; } }
+  @keyframes nodeIn{ to{ opacity:1; } }
+  @keyframes hubPulse{ 0%,100%{ opacity:1; } 50%{ opacity:0.4; } }
+  @keyframes fadeUp{ from{ opacity:0; transform:translateY(14px); } to{ opacity:1; transform:translateY(0); } }
+  .eyebrow{ font-size:0.72rem; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); margin-bottom:14px; font-weight:600; animation: fadeUp .6s ease both; }
+  .hero h1{ font-size:clamp(2.2rem,5vw,3.1rem); margin:0 0 14px; font-weight:600; letter-spacing:-0.01em; line-height:1.05; text-wrap:balance; animation: fadeUp .65s ease .06s both; }
+  .hero .role{ font-size:0.98rem; color:var(--muted); margin:0 0 26px; line-height:1.6; max-width:56ch; animation: fadeUp .65s ease .12s both; }
+  .cta-row{ display:flex; gap:12px; flex-wrap:wrap; margin-bottom:34px; animation: fadeUp .65s ease .18s both; }
+  .btn-primary{ display:inline-flex; align-items:center; gap:6px; background:var(--accent); color:#fff; font-size:0.84rem; font-weight:600; padding:10px 18px; border-radius:8px; text-decoration:none; white-space:nowrap; transition: transform .2s ease, box-shadow .2s ease; }
+  .btn-primary:hover{ transform:translateY(-1px); box-shadow:0 10px 22px -10px var(--accent); }
+  .btn-ghost{ display:inline-flex; align-items:center; gap:6px; background:none; color:var(--ink); font-size:0.84rem; font-weight:600; padding:10px 16px; border-radius:8px; border:1px solid var(--card-line); text-decoration:none; cursor:pointer; white-space:nowrap; transition: border-color .2s ease, background .2s ease; }
+  .btn-ghost:hover{ border-color:var(--accent); background:var(--accent-soft); }
+  .stats-row{ display:flex; gap:34px; flex-wrap:wrap; margin-bottom:8px; animation: fadeUp .65s ease .24s both; }
+  .stats-row .stat .num{ font-size:1.4rem; font-weight:600; color:var(--accent); font-variant-numeric:tabular-nums; }
+  .stats-row .stat .lbl{ font-size:0.72rem; color:var(--muted); margin-top:2px; }
+
+  .section-label{ font-size:0.72rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--accent); font-weight:600; margin: 44px 0 18px; }
+  .section-intro{ font-size:0.88rem; color:var(--muted); max-width:64ch; line-height:1.6; margin:-6px 0 20px; }
+  .comp-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(210px,1fr)); gap:14px; }
+  .comp-card{ background:var(--card); border:1px solid var(--card-line); border-radius:12px; padding:18px 18px; box-shadow:var(--shadow); }
+  .comp-card h3{ margin:0 0 8px; font-size:0.92rem; font-family: Optima,'Century Gothic',sans-serif; }
+  .comp-card p{ margin:0; font-size:0.83rem; color:var(--muted); line-height:1.5; }
+
+  /* ---------- Impact (case studies) ---------- */
+  .case-study{ background:var(--card); border:1px solid var(--card-line); border-radius:14px; padding:26px 28px; margin-bottom:18px; box-shadow:var(--shadow); }
+  .cs-header{ display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap; margin-bottom:18px; padding-bottom:16px; border-bottom:1px solid var(--card-line); }
+  .cs-header h3{ margin:0 0 4px; font-size:1.08rem; font-family: Optima,'Century Gothic',sans-serif; line-height:1.3; max-width:56ch; }
+  .cs-meta{ font-size:0.78rem; color:var(--muted); white-space:nowrap; }
+  .cs-grid{ display:grid; grid-template-columns:1fr 1fr 1.1fr; gap:24px; }
+  .cs-col .k{ font-size:0.68rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); margin-bottom:8px; font-weight:600; }
+  .cs-col p{ margin:0; font-size:0.85rem; line-height:1.6; color:var(--ink); }
+  .cs-col.impact .stat-chip{ display:inline-block; background:var(--accent-soft); color:var(--accent); font-size:0.8rem; font-weight:600; padding:5px 11px; border-radius:20px; margin:0 6px 8px 0; font-variant-numeric:tabular-nums; }
+  @media (max-width:760px){ .cs-grid{ grid-template-columns:1fr; row-gap:16px; } }
+
+  /* ---------- Builds ---------- */
+  .build-card{ background:var(--card); border:1px solid var(--card-line); border-radius:16px; padding:32px 34px; box-shadow:var(--shadow); margin-bottom:18px; }
+  .build-head{ display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; align-items:flex-start; margin-bottom:8px; }
+  .build-head h3{ margin:0 0 6px; font-size:1.3rem; font-family: Optima,'Century Gothic',sans-serif; }
+  .build-head .tagline{ margin:0; font-size:0.9rem; color:var(--muted); max-width:54ch; line-height:1.55; }
+  .build-desc{ font-size:0.88rem; line-height:1.65; color:var(--ink); max-width:68ch; margin:18px 0 24px; }
+  .build-arch{ display:grid; grid-template-columns:repeat(2,1fr); gap:18px 24px; margin:8px 0 6px; }
+  .arch-item{ padding:2px 0 2px 14px; border-left:2px solid var(--accent); }
+  .arch-item .k{ font-size:0.8rem; font-weight:600; margin-bottom:4px; }
+  .arch-item p{ margin:0; font-size:0.82rem; color:var(--muted); line-height:1.55; }
+  .stack-row{ display:flex; flex-wrap:wrap; gap:8px; margin-top:24px; padding-top:20px; border-top:1px solid var(--card-line); }
+  .stack-chip{ font-size:0.74rem; padding:5px 10px; border-radius:6px; background:var(--bg); border:1px solid var(--card-line); color:var(--muted); font-family:'SF Mono', Consolas, monospace; }
+  .build-note{ margin-top:16px; font-size:0.78rem; color:var(--muted); font-style:italic; }
+  @media (max-width:640px){ .build-arch{ grid-template-columns:1fr; } .build-card{ padding:24px 22px; } }
+
+  /* ---------- Experience ---------- */
+  .now-card{ display:flex; gap:14px; align-items:center; background:var(--accent-soft); border-radius:12px; padding:14px 18px; margin-bottom:30px; }
+  .now-card .dot{ width:8px; height:8px; border-radius:50%; background:var(--accent); flex-shrink:0; animation: hubPulse 2s ease-in-out infinite; }
+  .now-card p{ margin:0; font-size:0.85rem; line-height:1.5; color:var(--ink); }
+  .timeline{ position:relative; padding-left:26px; margin-top:8px; }
+  .timeline::before{ content:""; position:absolute; left:6px; top:6px; bottom:6px; width:1px; background:var(--line); }
+  .role-block{ position:relative; padding-bottom:34px; }
+  .role-block:last-child{ padding-bottom:4px; }
+  .role-block::before{ content:""; position:absolute; left:-26px; top:5px; width:9px; height:9px; border-radius:50%; background:var(--accent); border:2px solid var(--bg); }
+  .role-block h3{ margin:0 0 2px; font-size:1.02rem; font-family: Optima,'Century Gothic',sans-serif; }
+  .role-block .meta{ font-size:0.8rem; color:var(--muted); margin-bottom:10px; }
+  .role-block ul{ margin:0; padding-left:18px; }
+  .role-block li{ font-size:0.86rem; line-height:1.55; color:var(--ink); margin-bottom:5px; }
+  .edu-cert{ display:grid; grid-template-columns: 1.3fr 1fr; gap:28px; margin-top:8px; }
+  .edu-cert h3{ font-size:0.9rem; margin:0 0 10px; font-family: Optima,'Century Gothic',sans-serif; }
+  .edu-item{ font-size:0.86rem; margin-bottom:12px; line-height:1.5; }
+  .edu-item .school{ font-weight:600; }
+  .edu-item .deg{ color:var(--muted); }
+  .cert-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px; }
+  .cert-list li{ font-size:0.84rem; padding:8px 12px; background:var(--card); border:1px solid var(--card-line); border-radius:8px; box-shadow:var(--shadow); }
+  @media (max-width:640px){ .edu-cert{ grid-template-columns:1fr; } }
+
+  /* ---------- Publications ---------- */
+  .pub-list{ display:flex; flex-direction:column; gap:10px; margin-bottom:8px; }
+  .pub-item{ background:var(--card); border:1px solid var(--card-line); border-radius:10px; padding:14px 16px; display:flex; justify-content:space-between; gap:16px; align-items:baseline; flex-wrap:wrap; box-shadow:var(--shadow); }
+  .pub-item .t{ font-size:0.88rem; line-height:1.4; max-width:62ch; }
+  .pub-item .v{ font-size:0.76rem; color:var(--muted); white-space:nowrap; }
+  .status-pill{ font-size:0.68rem; letter-spacing:0.04em; text-transform:uppercase; background:var(--accent-soft); color:var(--accent); padding:3px 8px; border-radius:20px; white-space:nowrap; }
+  .lead-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:14px; margin-top:8px; }
+  .lead-card{ background:var(--card); border:1px solid var(--card-line); border-radius:12px; padding:16px 18px; box-shadow:var(--shadow); }
+  .lead-card h3{ margin:0 0 6px; font-size:0.88rem; font-family: Optima,'Century Gothic',sans-serif; }
+  .lead-card p{ margin:0; font-size:0.82rem; color:var(--muted); line-height:1.5; }
+
+  /* ---------- Contact ---------- */
+  .contact-hero{ padding: 30px 4px 10px; }
+  .contact-hero h1{ font-size:clamp(1.9rem,4vw,2.6rem); margin:0 0 14px; font-weight:600; text-wrap:balance; }
+  .contact-hero p{ color:var(--muted); max-width:52ch; line-height:1.6; margin:0 0 30px; font-size:0.95rem; }
+  .contact-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:14px; }
+  .contact-card{ background:var(--card); border:1px solid var(--card-line); border-radius:12px; padding:18px; text-decoration:none; display:flex; flex-direction:column; gap:6px; box-shadow:var(--shadow); transition: border-color 0.2s ease, transform 0.2s ease; }
+  .contact-card:hover{ border-color:var(--accent); transform: translateY(-2px); }
+  .contact-card .k{ font-size:0.7rem; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent); }
+  .contact-card .v{ font-size:0.95rem; font-weight:500; }
+
+  .foot{ margin-top:60px; padding-top:20px; border-top:1px solid var(--line); font-size:0.76rem; color:var(--muted); display:flex; justify-content:space-between; flex-wrap:wrap; gap:8px; }
+</style>
+</head>
+<body>
+<div class="site">
+  <div class="topbar">
+    <div class="brand"><span class="mark">AG</span><span>Aniket Ghonge</span></div>
+    <div class="topbar-right">
+      <div class="tabs" role="tablist" id="tabs">
+        <button class="tab active" role="tab" aria-selected="true" data-tab="overview">Overview</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="impact">Impact</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="builds">Builds</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="experience">Experience</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="publications">Publications</button>
+        <button class="tab" role="tab" aria-selected="false" data-tab="contact">Contact</button>
+        <span class="tab-indicator" id="tabIndicator"></span>
+      </div>
+      <a class="resume-btn" href="#" title="Wire this to a hosted PDF resume">Résumé ↓</a>
+    </div>
+  </div>
+
+  <div class="stage-wrap">
+    <div class="stage" id="stage">
+
+      <section class="panel is-active" data-panel="overview">
+        <div class="hero">
+          <svg class="net" viewBox="0 0 380 380" xmlns="http://www.w3.org/2000/svg">
+            <g stroke="#2a4d8f" stroke-width="1" fill="none">
+              <line x1="40" y1="60" x2="200" y2="150"/>
+              <line x1="200" y1="150" x2="330" y2="70"/>
+              <line x1="200" y1="150" x2="130" y2="280"/>
+              <line x1="130" y1="280" x2="280" y2="310"/>
+              <line x1="200" y1="150" x2="320" y2="240"/>
+              <line x1="40" y1="60" x2="130" y2="280"/>
+            </g>
+            <g fill="#2a4d8f">
+              <circle cx="40" cy="60" r="4"/><circle id="hub" cx="200" cy="150" r="6"/>
+              <circle cx="330" cy="70" r="4"/><circle cx="130" cy="280" r="4"/>
+              <circle cx="280" cy="310" r="4"/><circle cx="320" cy="240" r="4"/>
+            </g>
+          </svg>
+          <div class="eyebrow">Technology Operations · Portfolio Strategy</div>
+          <h1 class="display">Aniket Ghonge builds the systems that move a continent's worth of packages.</h1>
+          <p class="role">Senior Supply Chain Manager, Network Strategy &amp; Planning — Amazon · San Diego, CA. Eight years turning logistics complexity — capital, capacity, cross-functional execution — into governed, repeatable systems, and increasingly, into AI-built software that runs those systems end to end.</p>
+          <div class="cta-row">
+            <a class="btn-primary" href="https://slotting-app-cyan.vercel.app" target="_blank" rel="noopener">View a live build ↗</a>
+            <button class="btn-ghost" type="button" data-goto="builds">How I build with AI →</button>
+          </div>
+          <div class="stats-row">
+            <div class="stat"><div class="num">$4B+</div><div class="lbl">CAPITAL PORTFOLIO GOVERNED</div></div>
+            <div class="stat"><div class="num">50M+</div><div class="lbl">DAILY VOLUME NETWORK</div></div>
+            <div class="stat"><div class="num">90%</div><div class="lbl">OPERATIONAL OVERHEAD CUT</div></div>
+            <div class="stat"><div class="num">100+</div><div class="lbl">FACILITIES, NA &amp; UK</div></div>
+          </div>
+        </div>
+
+        <div class="section-label">Core competencies</div>
+        <div class="comp-grid">
+          <div class="comp-card"><h3>Portfolio &amp; Technology Operations</h3><p>Governance, roadmap prioritization, investment planning, operating model design, annual &amp; long-range planning, launch readiness.</p></div>
+          <div class="comp-card"><h3>AI-Enabled Automation</h3><p>Agentic AI, generative AI, workflow automation, decision support systems, operational tooling, product operating models.</p></div>
+          <div class="comp-card"><h3>Strategic Planning &amp; Finance</h3><p>Capital portfolio management ($4B+), business case development, forecasting, resource allocation, multiyear budget governance.</p></div>
+          <div class="comp-card"><h3>Cross-Functional Leadership</h3><p>Executive stakeholder management, matrixed org alignment, team development, organizational transformation.</p></div>
+          <div class="comp-card"><h3>Technical Toolkit</h3><p>Python, SQL, AI/ML, Tableau, QuickSight, Advanced Excel (VBA), SAP, Salesforce, AutoCAD &amp; Revit, ProModel &amp; Crystal Ball, MOST/MTM, simulation &amp; optimization modeling.</p></div>
+        </div>
+      </section>
+
+      <section class="panel" data-panel="impact">
+        <div class="section-label" style="margin-top:36px;">Impact — selected initiatives</div>
+
+        <div class="case-study">
+          <div class="cs-header">
+            <h3 class="display">Replacing manual planning workflows with AI-enabled decision systems</h3>
+            <div class="cs-meta">Amazon · Network Strategy &amp; Planning · 2025–Present</div>
+          </div>
+          <div class="cs-grid">
+            <div class="cs-col"><div class="k">Challenge</div><p>Pickup, delivery, and returns planning across Amazon's last-mile network still relied on manual program-management overhead to turn data into decisions — slow to update and hard to scale as volume grew.</p></div>
+            <div class="cs-col"><div class="k">Approach</div><p>Designed and built multiple software products end-to-end (UX and backend architecture), using Agentic AI and Generative AI to replace manual workflows with structured data and intelligent decision systems.</p></div>
+            <div class="cs-col impact"><div class="k">Impact</div>
+              <span class="stat-chip">90% overhead reduced</span>
+              <span class="stat-chip">40% WAPE improvement</span>
+              <p>Forecast accuracy and planning speed both improved while the manual workload behind them shrank.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-study">
+          <div class="cs-header">
+            <h3 class="display">Governing a $4B+ capital portfolio across 100+ facilities</h3>
+            <div class="cs-meta">Amazon · Industrial Design Engineering · 2023–2025</div>
+          </div>
+          <div class="cs-grid">
+            <div class="cs-col"><div class="k">Challenge</div><p>Annual and long-range planning, roadmap alignment, and resource allocation spanned 100+ fulfillment and logistics facilities across North America and the UK, with no standardized governance model.</p></div>
+            <div class="cs-col"><div class="k">Approach</div><p>Designed the operating model for cross-functional portfolio execution — governance cadences (WBR/MBR/QBR), standardized reporting, launch-readiness criteria, and decision-escalation paths — plus the investment business cases and risk assessments behind it.</p></div>
+            <div class="cs-col impact"><div class="k">Impact</div>
+              <span class="stat-chip">$15M cost avoidance</span>
+              <span class="stat-chip">$250M+ investment informed</span>
+              <span class="stat-chip">40% less process variability</span>
+              <p>Standardized effectiveness across 5 organizations and 1,000+ users in NA and the UK.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-study">
+          <div class="cs-header">
+            <h3 class="display">Building the operating model for a 50M+ daily volume network</h3>
+            <div class="cs-meta">Amazon · Portfolio &amp; Planning Operations · 2021–2023</div>
+          </div>
+          <div class="cs-grid">
+            <div class="cs-col"><div class="k">Challenge</div><p>Automated and manual fulfillment centers across North America had no shared portfolio management framework — asset deployment and labor planning were tracked manually, facility by facility.</p></div>
+            <div class="cs-col"><div class="k">Approach</div><p>Built and owned the operating model and portfolio management framework from scratch — optimization models, labor planning logic, and performance dashboards for asset deployment across the network.</p></div>
+            <div class="cs-col impact"><div class="k">Impact</div>
+              <span class="stat-chip">96% network adoption</span>
+              <p>Manual tracking replaced by structured data and standardized reporting network-wide.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" data-panel="builds">
+        <div class="section-label" style="margin-top:36px;">Builds — AI-native engineering</div>
+        <p class="section-intro">I use AI-assisted engineering to go from a math problem to a deployed, production system — solo, end to end. This is one running live right now, not a mockup.</p>
+
+        <div class="build-card">
+          <div class="build-head">
+            <div>
+              <h3>Slotting Optimization Simulator</h3>
+              <p class="tagline">A warehouse slotting optimization platform — the optimization math, the simulation engine, the database, and the security model, designed and shipped solo with AI-assisted engineering.</p>
+            </div>
+            <a class="btn-primary" href="https://slotting-app-cyan.vercel.app" target="_blank" rel="noopener">Open live app ↗</a>
+          </div>
+          <p class="build-desc">Compares generic (random) putaway against AI-optimized velocity- and multi-factor slotting for SMB, Mid-Market, and Enterprise warehouse operations — then proves the result with a real discrete-event simulation of a working shift, not just a static estimate.</p>
+
+          <div class="build-arch">
+            <div class="arch-item">
+              <div class="k">Optimization engine</div>
+              <p>Multi-objective weighted assignment across travel distance, labor time, congestion, replenishment effort, space utilization, and slot stability — with hard constraints (weight, capacity, zone) and turn-affinity clustering from uploaded historical order data.</p>
+            </div>
+            <div class="arch-item">
+              <div class="k">Digital twin</div>
+              <p>A discrete-event shift simulation (binary min-heap event queue) modeling order arrivals, picker travel, and forklift replenishment minute-by-minute — validating the optimization's static KPIs against real time-based behavior.</p>
+            </div>
+            <div class="arch-item">
+              <div class="k">Data &amp; security</div>
+              <p>Postgres via Supabase, with Row-Level Security enforcing a real admin boundary server-side — not a client-side check — behind a self-service admin dashboard and cross-user usage analytics.</p>
+            </div>
+            <div class="arch-item">
+              <div class="k">Explainability</div>
+              <p>What-if scenario testing (demand shifts, zone dedication) and a plain-English trade-off report that translates the math into "move N SKUs, X% less walking, ~Y-day payback" for a non-technical stakeholder.</p>
+            </div>
+          </div>
+
+          <div class="stack-row">
+            <span class="stack-chip">React + Vite</span>
+            <span class="stack-chip">Node / TypeScript</span>
+            <span class="stack-chip">Supabase (Postgres + RLS)</span>
+            <span class="stack-chip">Discrete-event simulation</span>
+            <span class="stack-chip">Vercel + Render CI/CD</span>
+          </div>
+          <p class="build-note">Optimization math validated against real public grocery transaction data and synthetic Zipf-distributed demand before shipping.</p>
+        </div>
+      </section>
+
+      <section class="panel" data-panel="experience">
+        <div class="section-label" style="margin-top:36px;">Experience</div>
+        <div class="now-card"><span class="dot"></span><p><strong>Currently:</strong> Senior Supply Chain Manager, Network Strategy &amp; Planning at Amazon. <strong>Previously:</strong> Sr. Supply Manager &amp; Engineering Manager (Industrial Design Engineering, Amazon), Walmart, Ranir, Amazon India.</p></div>
+        <div class="timeline">
+          <div class="role-block">
+            <h3 class="display">Senior Supply Chain Manager — Network Strategy &amp; Planning</h3>
+            <div class="meta">Amazon · San Diego, CA · Sep 2025 – Present</div>
+            <ul>
+              <li>Lead portfolio strategy and technical operations for Amazon's last-mile delivery network across pickup, delivery, and returns platforms.</li>
+              <li>Pioneered AI-enabled operations automation (Agentic AI + Generative AI) that cut operational overhead 90% while improving forecast accuracy (WAPE) by 40%.</li>
+              <li>Built and deployed multiple software products end-to-end (UX + backend) as operational tooling for planning teams.</li>
+              <li>Developed business cases informing $1.6B in revenue target allocation.</li>
+            </ul>
+          </div>
+          <div class="role-block">
+            <h3 class="display">Senior Supply Manager — Industrial Design Engineering (Technology Operations)</h3>
+            <div class="meta">Amazon · San Diego, CA · Sep 2023 – Sep 2025</div>
+            <ul>
+              <li>Led portfolio governance and investment prioritization across a $4B+ technology &amp; automation capital portfolio spanning 100+ facilities in NA and the UK.</li>
+              <li>Delivered $15M in cost avoidance, informing $250M+ in network expansion and automation investments.</li>
+              <li>Designed governance cadences (WBR/MBR/QBR) and launch-readiness criteria across 5 organizations and 1,000+ users.</li>
+              <li>Led, coached, and developed a team of 22 process and design engineers; reduced process variability 40%.</li>
+            </ul>
+          </div>
+          <div class="role-block">
+            <h3 class="display">Engineering Manager — Industrial Design Engineering (Portfolio &amp; Planning Operations)</h3>
+            <div class="meta">Amazon · Nashville, TN · Oct 2021 – Sep 2023</div>
+            <ul>
+              <li>Built and owned the operating model for a 50M+ daily volume network across automated and manual fulfillment centers.</li>
+              <li>Developed optimization models, labor planning logic, and dashboards achieving 96% network adoption.</li>
+            </ul>
+          </div>
+          <div class="role-block">
+            <h3 class="display">Senior Operations Manager — Omnichannel Fulfillment &amp; Store Operations</h3>
+            <div class="meta">Walmart · Spring Valley, IL · Aug 2020 – Sep 2021</div>
+            <ul>
+              <li>Directed fulfillment operations (pickup, curbside, online grocery, returns) supporting $55M in weekly sales and 3.5M units.</li>
+              <li>Led a team of 8 managers and 170 associates; built VBA-based reporting tools to speed leadership decisions.</li>
+            </ul>
+          </div>
+          <div class="role-block">
+            <h3 class="display">Industrial Engineer</h3>
+            <div class="meta">Ranir (Consumer Healthcare Manufacturing) · Grand Rapids, MI · Jun 2019 – Apr 2020</div>
+            <ul>
+              <li>Executed Lean Six Sigma DMAIC projects delivering measurable throughput improvement and waste reduction.</li>
+            </ul>
+          </div>
+          <div class="role-block">
+            <h3 class="display">Supply Chain Specialist — UK Business Unit</h3>
+            <div class="meta">Amazon · India · Mar 2017 – Sep 2017</div>
+            <ul>
+              <li>Escalation owner for customer-impacting issues across EU and NA; recognized Top Performer during peak (Black Friday/Cyber Monday).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="section-label">Education &amp; certifications</div>
+        <div class="edu-cert">
+          <div>
+            <h3>Education</h3>
+            <div class="edu-item"><div class="school">Western Michigan University</div><div class="deg">M.S. Industrial Engineering, 2018–2020 — Operations Research, Advanced Simulation, Linear Programming</div></div>
+            <div class="edu-item"><div class="school">University of Pune</div><div class="deg">B.E. Mechanical Engineering, 2012–2016 — Operations Research, System Design, Quality Engineering</div></div>
+          </div>
+          <div>
+            <h3>Certifications</h3>
+            <ul class="cert-list">
+              <li>Project Management Professional (PMP)</li>
+              <li>Lean Six Sigma Black Belt (LSSBB)</li>
+              <li>Certified Six Sigma Green Belt (CSSGB)</li>
+              <li>AWS AI Practitioner</li>
+              <li>AWS AI Fundamentals</li>
+              <li>Current Good Manufacturing Practices (cGMP)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel" data-panel="publications">
+        <div class="section-label" style="margin-top:36px;">Publications (2026)</div>
+        <div class="pub-list">
+          <div class="pub-item"><span class="t">An AI-Enabled Automated Multi-Criteria Decision Framework for Shipper Prioritization in Capacity-Constrained Logistics Networks</span><span class="v">MDPI Logistics</span><span class="status-pill">Under review</span></div>
+          <div class="pub-item"><span class="t">Serverless Agentic AI Architecture for Real-Time Enterprise Decision Support: A Multi-Agent Framework for Logistics Capacity Management</span><span class="v">IEEE Access</span><span class="status-pill">Under review</span></div>
+          <div class="pub-item"><span class="t">From Practitioner to Production: An Engineering Management Framework for AI-Enabled Decision Systems</span><span class="v">IEEE Trans. Engineering Management</span><span class="status-pill">Under review</span></div>
+          <div class="pub-item"><span class="t">Monte Carlo Validation of Multi-Criteria Weighted Scoring Models for Logistics Capacity Management</span><span class="v">—</span><span class="status-pill">Under review</span></div>
+          <div class="pub-item"><span class="t">Lessons from the Field: A Practitioner's Guide to Building Enterprise AI Decision Systems Without an Engineering Team</span><span class="v">IEEE Engineering Management Review</span><span class="status-pill">Under review</span></div>
+        </div>
+
+        <div class="section-label">Leadership &amp; professional service</div>
+        <div class="lead-grid">
+          <div class="lead-card"><h3>PMI Orange County Chapter</h3><p>Director of Community Outreach (2026–present) — leads PM education, mentorship, and certification outreach across Southern California.</p></div>
+          <div class="lead-card"><h3>Industry judging &amp; peer review</h3><p>108+ reviews as a judge for the Stevie Awards (Technology, Analytical &amp; Software Engineering) and Global Recognition Awards; active IEEE peer reviewer.</p></div>
+          <div class="lead-card"><h3>Professional memberships</h3><p>IEEE (Senior Member application under review), INFORMS (presenter, 2026 Annual Meeting), PMI (PMP, PMI-ACP).</p></div>
+        </div>
+      </section>
+
+      <section class="panel" data-panel="contact">
+        <div class="contact-hero">
+          <h1 class="display">Let's talk portfolio strategy, ops automation, or the next role.</h1>
+          <p>Based in San Diego, CA — open to conversations on technology operations, portfolio strategy, and AI-enabled decision systems.</p>
+          <div class="contact-grid">
+            <a class="contact-card" href="mailto:ghongeaniket24@gmail.com"><span class="k">Email</span><span class="v">ghongeaniket24@gmail.com</span></a>
+            <a class="contact-card" href="tel:+12692670971"><span class="k">Phone</span><span class="v">269.267.0971</span></a>
+            <a class="contact-card" href="https://www.linkedin.com/in/aniketghonge/" target="_blank" rel="noopener"><span class="k">LinkedIn</span><span class="v">linkedin.com/in/aniketghonge</span></a>
+            <div class="contact-card"><span class="k">Location</span><span class="v">San Diego, CA</span></div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>© 2026 Aniket Ghonge</span>
+    <span>Designed &amp; built with AI-assisted engineering</span>
+  </div>
+</div>
+
+<script>
+(function(){
+  var order = ['overview','impact','builds','experience','publications','contact'];
+  var stage = document.getElementById('stage');
+  var tabsEl = document.getElementById('tabs');
+  var indicator = document.getElementById('tabIndicator');
+  var panels = {};
+  order.forEach(function(k){ panels[k] = stage.querySelector('[data-panel="'+k+'"]'); });
+  var active = 'overview';
+  var animating = false;
+
+  function placeIndicator(btn){
+    indicator.style.width = btn.offsetWidth + 'px';
+    indicator.style.transform = 'translateX(' + btn.offsetLeft + 'px)';
+  }
+
+  function initIndicator(){
+    var activeBtn = tabsEl.querySelector('.tab.active');
+    indicator.style.transition = 'none';
+    placeIndicator(activeBtn);
+    requestAnimationFrame(function(){ indicator.style.transition = ''; });
+  }
+
+  function activateTab(target){
+    if(target === active || animating) return;
+    var btn = tabsEl.querySelector('.tab[data-tab="'+target+'"]');
+    if(!btn) return;
+
+    tabsEl.querySelectorAll('.tab').forEach(function(t){ t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
+    btn.classList.add('active'); btn.setAttribute('aria-selected','true');
+    placeIndicator(btn);
+
+    var dir = order.indexOf(target) > order.indexOf(active) ? 1 : -1;
+    var current = panels[active];
+    var next = panels[target];
+
+    animating = true;
+    current.classList.remove('is-active');
+    current.classList.add('is-flowing');
+    next.classList.add('is-flowing');
+
+    var h = Math.max(current.offsetHeight, next.offsetHeight);
+    stage.style.height = h + 'px';
+
+    next.classList.add(dir > 0 ? 'enter-right' : 'enter-left');
+    void next.offsetWidth;
+
+    requestAnimationFrame(function(){
+      current.classList.add(dir > 0 ? 'exit-left' : 'exit-right');
+      next.classList.remove('enter-right','enter-left');
+    });
+
+    var done = false;
+    function finish(){
+      if(done) return; done = true;
+      current.classList.remove('is-flowing','exit-left','exit-right');
+      current.style.display = 'none';
+      next.classList.remove('is-flowing');
+      next.classList.add('is-active');
+      stage.style.height = 'auto';
+      active = target;
+      animating = false;
+      next.removeEventListener('transitionend', onEnd);
+    }
+    function onEnd(ev){ if(ev.target === next) finish(); }
+    next.addEventListener('transitionend', onEnd);
+    setTimeout(finish, 650);
+  }
+
+  tabsEl.addEventListener('click', function(e){
+    var btn = e.target.closest('.tab');
+    if(!btn) return;
+    activateTab(btn.getAttribute('data-tab'));
+  });
+
+  document.querySelectorAll('[data-goto]').forEach(function(el){
+    el.addEventListener('click', function(){ activateTab(el.getAttribute('data-goto')); });
+  });
+
+  initIndicator();
+  window.addEventListener('resize', initIndicator);
+})();
+</script>
+</body>
+</html>
