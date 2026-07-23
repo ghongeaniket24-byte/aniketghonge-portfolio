@@ -508,7 +508,6 @@
     function finish(){
       if(done) return; done = true;
       current.classList.remove('is-flowing','exit-left','exit-right');
-      current.style.display = 'none';
       next.classList.remove('is-flowing');
       next.classList.add('is-active');
       stage.style.height = 'auto';
