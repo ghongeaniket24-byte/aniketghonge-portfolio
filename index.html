@@ -63,6 +63,17 @@ section { padding: 100px 0; }
 [data-theme="light"] .moon-icon { display: none; }
 .mobile-menu-btn { display: none; width: 36px; height: 36px; border-radius: 8px; align-items: center; justify-content: center; background: var(--card); border: 1px solid var(--card-border); }
 
+/* GitHub Star Button */
+.github-star-btn { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 9999px; font-size: 0.75rem; font-weight: 600; color: var(--muted); background: var(--card); border: 1px solid var(--card-border); transition: all 0.2s; }
+.github-star-btn:hover { color: #eab308; border-color: #eab308; background: rgba(234,179,8,0.08); }
+.github-star-btn svg { color: #eab308; }
+
+/* Cite Button */
+.cite-btn { display: inline-flex; align-items: center; gap: 4px; padding: 4px 10px; border-radius: 9999px; font-size: 0.68rem; font-weight: 600; color: var(--muted); background: var(--card); border: 1px solid var(--card-border); cursor: pointer; transition: all 0.2s; margin-top: 8px; }
+.cite-btn:hover { color: var(--accent); border-color: var(--accent); }
+.cite-btn.copied { color: #22c55e; border-color: #22c55e; }
+.cite-btn svg { width: 12px; height: 12px; }
+
 /* ===== HERO ===== */
 .hero { padding: 80px 0 60px; }
 .hero-grid { display: grid; grid-template-columns: 1fr 300px; gap: 60px; align-items: center; }
@@ -226,6 +237,10 @@ section { padding: 100px 0; }
 <nav class="nav">
   <div class="nav-inner">
     <a href="#" class="nav-logo">A<span>.</span>Ghonge</a>
+    <a href="https://github.com/ghongeaniket24-byte/aniketghonge-portfolio" target="_blank" rel="noopener" class="github-star-btn" title="Star this portfolio on GitHub">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.75.75 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25z"/></svg>
+      Star on GitHub
+    </a>
     <div class="nav-tabs">
       <a href="#overview" class="nav-tab active" data-tab="overview">Overview</a>
       <a href="#ai-systems" class="nav-tab" data-tab="ai-systems">AI Systems</a>
@@ -454,6 +469,7 @@ section { padding: 100px 0; }
         <div>
           <h4>An AI-Enabled Automated Multi-Criteria Decision Framework for Last-Mile Logistics Shipper Prioritization</h4>
           <p>MDPI Logistics</p>
+          <button class="cite-btn" onclick="copyBibtex(this, 'ghonge2026mcdm')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Cite</button>
         </div>
         <span class="pub-status">Pending Review</span>
       </div>
@@ -461,6 +477,7 @@ section { padding: 100px 0; }
         <div>
           <h4>Serverless Agentic AI Architecture for Automated CRM in Enterprise Supply Chains</h4>
           <p>IEEE Access</p>
+          <button class="cite-btn" onclick="copyBibtex(this, 'ghonge2026agentic')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Cite</button>
         </div>
         <span class="pub-status">Pending Review</span>
       </div>
@@ -468,6 +485,7 @@ section { padding: 100px 0; }
         <div>
           <h4>Monte Carlo Validation of Multi-Criteria Weighted Scoring Models for Supply Chain Decision-Making</h4>
           <p>IEEE IEEM 2026</p>
+          <button class="cite-btn" onclick="copyBibtex(this, 'ghonge2026montecarlo')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Cite</button>
         </div>
         <span class="pub-status">Pending Review</span>
       </div>
@@ -475,6 +493,7 @@ section { padding: 100px 0; }
         <div>
           <h4>From Practitioner to Production: Building Enterprise AI Systems Without Engineering Teams</h4>
           <p>IEEE Trans. Engineering Management</p>
+          <button class="cite-btn" onclick="copyBibtex(this, 'ghonge2026practitioner')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Cite</button>
         </div>
         <span class="pub-status">Pending Review</span>
       </div>
@@ -482,6 +501,7 @@ section { padding: 100px 0; }
         <div>
           <h4>Lessons from the Field: AI System Development by Non-Traditional Engineers in Enterprise Environments</h4>
           <p>IEEE Engineering Management Review</p>
+          <button class="cite-btn" onclick="copyBibtex(this, 'ghonge2026lessons')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Cite</button>
         </div>
         <span class="pub-status">Pending Review</span>
       </div>
@@ -489,6 +509,7 @@ section { padding: 100px 0; }
         <div>
           <h4>A Multi-Tiered Governance Framework for Autonomous AI Agents in Supply Chain Decision-Making</h4>
           <p>IEEE iGET 2026</p>
+          <button class="cite-btn" onclick="copyBibtex(this, 'ghonge2026governance')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Cite</button>
         </div>
         <span class="pub-status submitted">✅ Submitted Jul 19, 2026</span>
       </div>
@@ -496,6 +517,7 @@ section { padding: 100px 0; }
         <div>
           <h4>The Golden Zone: Optimizing Warehouse Slotting Under Competing Objectives</h4>
           <p>INFORMS Case Competition 2026</p>
+          <button class="cite-btn" onclick="copyBibtex(this, 'ghonge2026slotting')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Cite</button>
         </div>
         <span class="pub-status submitted">✅ Submitted Jul 28, 2026</span>
       </div>
@@ -810,6 +832,72 @@ function closeMobile() {
 
   document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 })();
+
+// BibTeX Citations
+const bibtexData = {
+  ghonge2026mcdm: `@article{ghonge2026mcdm,
+  author = {Ghonge, Aniket and Dwivedi, Ashutosh},
+  title = {An AI-Enabled Automated Multi-Criteria Decision Framework for Shipper Prioritization in Capacity-Constrained Logistics Networks},
+  journal = {MDPI Logistics},
+  year = {2026},
+  note = {Under Review}
+}`,
+  ghonge2026agentic: `@article{ghonge2026agentic,
+  author = {Ghonge, Aniket and Dwivedi, Ashutosh},
+  title = {Serverless Agentic AI Architecture for Real-Time Enterprise Decision Support: A Multi-Agent Framework for Logistics Capacity Management},
+  journal = {IEEE Access},
+  year = {2026},
+  note = {Under Review}
+}`,
+  ghonge2026montecarlo: `@inproceedings{ghonge2026montecarlo,
+  author = {Ghonge, Aniket and Dwivedi, Ashutosh},
+  title = {Monte Carlo Validation of Multi-Criteria Weighted Scoring Models for Logistics Capacity Management},
+  booktitle = {Proc. IEEE International Conference on Industrial Engineering and Engineering Management (IEEM 2026)},
+  year = {2026},
+  note = {Under Review}
+}`,
+  ghonge2026practitioner: `@article{ghonge2026practitioner,
+  author = {Ghonge, Aniket and Dwivedi, Ashutosh},
+  title = {From Practitioner to Production: An Engineering Management Framework for AI-Enabled Decision Systems},
+  journal = {IEEE Transactions on Engineering Management},
+  year = {2026},
+  note = {Under Review}
+}`,
+  ghonge2026lessons: `@article{ghonge2026lessons,
+  author = {Ghonge, Aniket and Dwivedi, Ashutosh},
+  title = {Lessons from the Field: A Practitioner's Guide to Building Enterprise AI Decision Systems Without an Engineering Team},
+  journal = {IEEE Engineering Management Review},
+  year = {2026},
+  note = {Under Review}
+}`,
+  ghonge2026governance: `@inproceedings{ghonge2026governance,
+  author = {Ghonge, Aniket and Dwivedi, Ashutosh},
+  title = {A Multi-Tiered Governance Framework for Autonomous AI Agents in Supply Chain Decision-Making},
+  booktitle = {2026 IEEE Global Emerging Technologies Conference (iGET)},
+  year = {2026},
+  note = {Submitted July 19, 2026}
+}`,
+  ghonge2026slotting: `@misc{ghonge2026slotting,
+  author = {Ghonge, Aniket and Dwivedi, Ashutosh},
+  title = {The Golden Zone: Optimizing Warehouse Slotting Under Competing Objectives},
+  howpublished = {INFORMS Case Competition 2026},
+  year = {2026},
+  note = {Submitted July 28, 2026}
+}`
+};
+
+function copyBibtex(btn, key) {
+  const text = bibtexData[key];
+  if (!text) return;
+  navigator.clipboard.writeText(text).then(function() {
+    btn.classList.add('copied');
+    btn.innerHTML = '<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg> Copied!';
+    setTimeout(function() {
+      btn.classList.remove('copied');
+      btn.innerHTML = '<svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg> Cite';
+    }, 2000);
+  });
+}
 </script>
 </body>
 </html>
