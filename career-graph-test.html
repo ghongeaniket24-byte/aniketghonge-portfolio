@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Journey — Aniket Ghonge</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #09090b;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 80px 24px;
+        }
+
+        /* Section Header */
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            background: linear-gradient(135deg, #ffffff 0%, #a78bfa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #71717a;
+            font-weight: 400;
+        }
+
+        /* Career Graph Container */
+        .career-graph {
+            position: relative;
+            width: 100%;
+            padding: 40px 0;
+        }
+
+        /* SVG Path */
+        .graph-svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .career-path {
+            fill: none;
+            stroke: #8b5cf6;
+            stroke-width: 2;
+            stroke-dasharray: 2000;
+            stroke-dashoffset: 2000;
+            filter: drop-shadow(0 0 6px rgba(139, 92, 246, 0.4));
+            transition: stroke-dashoffset 2s ease-in-out;
+        }
+
+        .career-path.animated {
+            stroke-dashoffset: 0;
+        }
+
+        /* Particle dots along path */
+        .particle-dot {
+            fill: #8b5cf6;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .particle-dot.visible {
+            animation: particlePulse 2s infinite;
+        }
+
+        @keyframes particlePulse {
+            0%, 100% { opacity: 0.3; r: 2; }
+            50% { opacity: 0.8; r: 3; }
+        }
+
+        /* Nodes Container */
+        .nodes-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            position: relative;
+            z-index: 2;
+            gap: 8px;
+        }
+
+        /* Individual Node */
+        .career-node {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+            min-width: 0;
+        }
+
+        .node-circle-wrapper {
+            position: relative;
+            width: 48px;
+            height: 48px;
+            margin-bottom: 16px;
+        }
+
+        .node-circle {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: #18181b;
+            border: 2px solid #27272a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: scale(0);
+            transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1), 
+                        border-color 0.3s ease,
+                        box-shadow 0.3s ease;
+        }
+
+        .node-circle.visible {
+            transform: scale(1);
+            border-color: #8b5cf6;
+            box-shadow: 0 0 20px rgba(139, 92, 246, 0.3);
+        }
+
+        .node-circle-inner {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #8b5cf6;
+            opacity: 0;
+            transition: opacity 0.3s ease 0.2s;
+        }
+
+        .node-circle.visible .node-circle-inner {
+            opacity: 1;
+        }
+
+        /* Current node pulsing glow */
+        .career-node.current .node-circle.visible {
+            border-color: #a78bfa;
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.5);
+        }
+
+        .career-node.current .node-circle-wrapper::before {
+            content: '';
+            position: absolute;
+            top: -6px;
+            left: -6px;
+            right: -6px;
+            bottom: -6px;
+            border-radius: 50%;
+            border: 2px solid rgba(139, 92, 246, 0.4);
+            animation: pulseRing 2s infinite;
+        }
+
+        .career-node.current .node-circle-wrapper::after {
+            content: '';
+            position: absolute;
+            top: -12px;
+            left: -12px;
+            right: -12px;
+            bottom: -12px;
+            border-radius: 50%;
+            border: 1px solid rgba(139, 92, 246, 0.2);
+            animation: pulseRing 2s infinite 0.5s;
+        }
+
+        @keyframes pulseRing {
+            0% { transform: scale(1); opacity: 1; }
+            100% { transform: scale(1.4); opacity: 0; }
+        }
+
+        /* Node Label */
+        .node-label {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: opacity 0.4s ease, transform 0.4s ease;
+            padding: 0 4px;
+        }
+
+        .node-label.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .node-role {
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+
+        .node-company {
+            font-size: 0.7rem;
+            color: #71717a;
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+
+        .node-year {
+            font-size: 0.65rem;
+            color: #8b5cf6;
+            font-weight: 500;
+        }
+
+        /* Through-line Bar */
+        .throughline-section {
+            margin-top: 80px;
+            position: relative;
+        }
+
+        .throughline-bar {
+            width: 0%;
+            height: 4px;
+            background: linear-gradient(90deg, #8b5cf6 0%, #a78bfa 50%, #8b5cf6 100%);
+            border-radius: 2px;
+            transition: width 1.5s ease-in-out 2.5s;
+            position: relative;
+            overflow: visible;
+        }
+
+        .throughline-bar.animated {
+            width: 100%;
+        }
+
+        .throughline-bar::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: 0;
+            right: 0;
+            bottom: -2px;
+            background: linear-gradient(90deg, #8b5cf6, #a78bfa, #8b5cf6);
+            border-radius: 4px;
+            filter: blur(8px);
+            opacity: 0.4;
+        }
+
+        .throughline-label {
+            text-align: center;
+            margin-top: 20px;
+            opacity: 0;
+            transition: opacity 0.5s ease 3.5s;
+        }
+
+        .throughline-label.visible {
+            opacity: 1;
+        }
+
+        .throughline-label span {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #a1a1aa;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+        }
+
+        .throughline-label .dot {
+            display: inline-block;
+            width: 4px;
+            height: 4px;
+            background: #8b5cf6;
+            border-radius: 50%;
+            margin: 0 12px;
+            vertical-align: middle;
+        }
+
+        /* Connection lines from nodes to throughline */
+        .connector-lines {
+            display: flex;
+            justify-content: space-between;
+            height: 40px;
+            margin-top: 20px;
+        }
+
+        .connector-line {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .connector-line::after {
+            content: '';
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(to bottom, rgba(139, 92, 246, 0.3), rgba(139, 92, 246, 0.1));
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .connector-line.visible::after {
+            opacity: 1;
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 60px 20px;
+            }
+
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+
+            .section-header p {
+                font-size: 0.95rem;
+            }
+
+            .section-header {
+                margin-bottom: 50px;
+            }
+
+            .career-graph {
+                padding: 20px 0;
+            }
+
+            .graph-svg {
+                display: none;
+            }
+
+            .nodes-container {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0;
+            }
+
+            .career-node {
+                flex-direction: row;
+                align-items: center;
+                padding: 16px 0;
+                position: relative;
+            }
+
+            .career-node:not(:last-child)::after {
+                content: '';
+                position: absolute;
+                left: 23px;
+                top: 64px;
+                bottom: -16px;
+                width: 2px;
+                background: linear-gradient(to bottom, #8b5cf6, rgba(139, 92, 246, 0.2));
+                opacity: 0;
+                transition: opacity 0.4s ease;
+            }
+
+            .career-node.node-animated:not(:last-child)::after {
+                opacity: 1;
+            }
+
+            .node-circle-wrapper {
+                margin-bottom: 0;
+                margin-right: 20px;
+                flex-shrink: 0;
+            }
+
+            .node-label {
+                text-align: left;
+            }
+
+            .node-role {
+                font-size: 0.85rem;
+            }
+
+            .node-company {
+                font-size: 0.8rem;
+            }
+
+            .node-year {
+                font-size: 0.75rem;
+            }
+
+            .connector-lines {
+                display: none;
+            }
+
+            .throughline-section {
+                margin-top: 50px;
+            }
+        }
+
+        /* Spacer for scroll testing */
+        .scroll-spacer {
+            height: 40vh;
+        }
+    </style>
+</head>
+<body>
+    <!-- Spacer to demonstrate scroll trigger -->
+    <div class="scroll-spacer"></div>
+
+    <section class="container" id="career-section">
+        <div class="section-header">
+            <h2>Career Journey</h2>
+            <p>From operations specialist to AI systems builder</p>
+        </div>
+
+        <div class="career-graph" id="career-graph">
+            <!-- SVG Path connecting nodes -->
+            <svg class="graph-svg" id="graph-svg" preserveAspectRatio="none">
+                <defs>
+                    <filter id="glow">
+                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                        <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+                <path class="career-path" id="career-path" filter="url(#glow)"/>
+                <!-- Particle dots -->
+                <circle class="particle-dot" cx="0" cy="0" r="2" id="particle-1"/>
+                <circle class="particle-dot" cx="0" cy="0" r="2" id="particle-2"/>
+                <circle class="particle-dot" cx="0" cy="0" r="2" id="particle-3"/>
+            </svg>
+
+            <!-- Career Nodes -->
+            <div class="nodes-container">
+                <div class="career-node" data-index="0">
+                    <div class="node-circle-wrapper">
+                        <div class="node-circle">
+                            <div class="node-circle-inner"></div>
+                        </div>
+                    </div>
+                    <div class="node-label">
+                        <div class="node-role">Supply Chain Analyst</div>
+                        <div class="node-company">Amazon India</div>
+                        <div class="node-year">2017</div>
+                    </div>
+                </div>
+
+                <div class="career-node" data-index="1">
+                    <div class="node-circle-wrapper">
+                        <div class="node-circle">
+                            <div class="node-circle-inner"></div>
+                        </div>
+                    </div>
+                    <div class="node-label">
+                        <div class="node-role">Project Engineer</div>
+                        <div class="node-company">TAL Manufacturing Solutions</div>
+                        <div class="node-year">2016–2017</div>
+                    </div>
+                </div>
+
+                <div class="career-node" data-index="2">
+                    <div class="node-circle-wrapper">
+                        <div class="node-circle">
+                            <div class="node-circle-inner"></div>
+                        </div>
+                    </div>
+                    <div class="node-label">
+                        <div class="node-role">Industrial Engineer</div>
+                        <div class="node-company">Ranir</div>
+                        <div class="node-year">2019–2020</div>
+                    </div>
+                </div>
+
+                <div class="career-node" data-index="3">
+                    <div class="node-circle-wrapper">
+                        <div class="node-circle">
+                            <div class="node-circle-inner"></div>
+                        </div>
+                    </div>
+                    <div class="node-label">
+                        <div class="node-role">Sr. Operations Manager</div>
+                        <div class="node-company">Walmart</div>
+                        <div class="node-year">2020–2021</div>
+                    </div>
+                </div>
+
+                <div class="career-node" data-index="4">
+                    <div class="node-circle-wrapper">
+                        <div class="node-circle">
+                            <div class="node-circle-inner"></div>
+                        </div>
+                    </div>
+                    <div class="node-label">
+                        <div class="node-role">Engineering Program Manager</div>
+                        <div class="node-company">Amazon</div>
+                        <div class="node-year">2021–2023</div>
+                    </div>
+                </div>
+
+                <div class="career-node" data-index="5">
+                    <div class="node-circle-wrapper">
+                        <div class="node-circle">
+                            <div class="node-circle-inner"></div>
+                        </div>
+                    </div>
+                    <div class="node-label">
+                        <div class="node-role">Sr. Supply Manager (IDE)</div>
+                        <div class="node-company">Amazon</div>
+                        <div class="node-year">2023–2025</div>
+                    </div>
+                </div>
+
+                <div class="career-node current" data-index="6">
+                    <div class="node-circle-wrapper">
+                        <div class="node-circle">
+                            <div class="node-circle-inner"></div>
+                        </div>
+                    </div>
+                    <div class="node-label">
+                        <div class="node-role">Sr. Supply Chain Manager</div>
+                        <div class="node-company">Amazon</div>
+                        <div class="node-year">2025–Present</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Connector lines -->
+            <div class="connector-lines" id="connector-lines">
+                <div class="connector-line"></div>
+                <div class="connector-line"></div>
+                <div class="connector-line"></div>
+                <div class="connector-line"></div>
+                <div class="connector-line"></div>
+                <div class="connector-line"></div>
+                <div class="connector-line"></div>
+            </div>
+
+            <!-- Through-line Bar -->
+            <div class="throughline-section">
+                <div class="throughline-bar" id="throughline-bar"></div>
+                <div class="throughline-label" id="throughline-label">
+                    <span>Product Development</span>
+                    <span class="dot"></span>
+                    <span>Project Management</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Spacer for scroll testing -->
+    <div class="scroll-spacer"></div>
+
+    <script>
+        // Draw SVG path connecting nodes
+        function drawPath() {
+            const svg = document.getElementById('graph-svg');
+            const nodesContainer = document.querySelector('.nodes-container');
+            const nodes = document.querySelectorAll('.career-node');
+            const path = document.getElementById('career-path');
+
+            if (window.innerWidth <= 768) return;
+
+            const containerRect = nodesContainer.getBoundingClientRect();
+            const graphRect = document.getElementById('career-graph').getBoundingClientRect();
+
+            // Build path through center of each node circle
+            let pathData = '';
+            const points = [];
+
+            nodes.forEach((node, index) => {
+                const circle = node.querySelector('.node-circle-wrapper');
+                const circleRect = circle.getBoundingClientRect();
+                const x = circleRect.left - graphRect.left + circleRect.width / 2;
+                const y = circleRect.top - graphRect.top + circleRect.height / 2;
+                points.push({ x, y });
+            });
+
+            if (points.length < 2) return;
+
+            // Create smooth curve through points
+            pathData = `M ${points[0].x} ${points[0].y}`;
+            for (let i = 1; i < points.length; i++) {
+                const prev = points[i - 1];
+                const curr = points[i];
+                const cpx1 = prev.x + (curr.x - prev.x) * 0.5;
+                const cpy1 = prev.y;
+                const cpx2 = prev.x + (curr.x - prev.x) * 0.5;
+                const cpy2 = curr.y;
+                pathData += ` C ${cpx1} ${cpy1}, ${cpx2} ${cpy2}, ${curr.x} ${curr.y}`;
+            }
+
+            path.setAttribute('d', pathData);
+
+            // Set SVG dimensions
+            svg.setAttribute('width', graphRect.width);
+            svg.setAttribute('height', containerRect.height + 20);
+            svg.style.height = (containerRect.height + 20) + 'px';
+
+            // Calculate and set stroke-dasharray based on actual path length
+            const pathLength = path.getTotalLength();
+            path.style.strokeDasharray = pathLength;
+            path.style.strokeDashoffset = pathLength;
+
+            // Position particle dots along path
+            positionParticles(path, pathLength);
+        }
+
+        function positionParticles(path, pathLength) {
+            const particles = [
+                document.getElementById('particle-1'),
+                document.getElementById('particle-2'),
+                document.getElementById('particle-3')
+            ];
+
+            particles.forEach((particle, i) => {
+                const point = path.getPointAtLength(pathLength * (0.25 + i * 0.25));
+                particle.setAttribute('cx', point.x);
+                particle.setAttribute('cy', point.y);
+            });
+        }
+
+        // Animation trigger
+        function animateGraph() {
+            const path = document.getElementById('career-path');
+            const nodes = document.querySelectorAll('.career-node');
+            const connectors = document.querySelectorAll('.connector-line');
+            const throughlineBar = document.getElementById('throughline-bar');
+            const throughlineLabel = document.getElementById('throughline-label');
+            const particles = document.querySelectorAll('.particle-dot');
+
+            // Animate path
+            path.classList.add('animated');
+            path.style.strokeDashoffset = '0';
+
+            // Animate particles
+            setTimeout(() => {
+                particles.forEach(p => p.classList.add('visible'));
+            }, 1000);
+
+            // Animate nodes in sequence
+            nodes.forEach((node, index) => {
+                const delay = 300 + index * 200;
+
+                setTimeout(() => {
+                    const circle = node.querySelector('.node-circle');
+                    circle.classList.add('visible');
+                    node.classList.add('node-animated');
+                }, delay);
+
+                setTimeout(() => {
+                    const label = node.querySelector('.node-label');
+                    label.classList.add('visible');
+                }, delay + 200);
+            });
+
+            // Animate connectors
+            setTimeout(() => {
+                connectors.forEach(c => c.classList.add('visible'));
+            }, 300 + nodes.length * 200);
+
+            // Animate throughline
+            setTimeout(() => {
+                throughlineBar.classList.add('animated');
+            }, 300 + nodes.length * 200 + 200);
+
+            // Show throughline label
+            setTimeout(() => {
+                throughlineLabel.classList.add('visible');
+            }, 300 + nodes.length * 200 + 1700);
+        }
+
+        // IntersectionObserver to trigger animation on scroll
+        let hasAnimated = false;
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !hasAnimated) {
+                    hasAnimated = true;
+                    drawPath();
+                    setTimeout(animateGraph, 100);
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            const graphSection = document.getElementById('career-graph');
+            observer.observe(graphSection);
+
+            // Redraw path on resize
+            let resizeTimeout;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimeout);
+                resizeTimeout = setTimeout(() => {
+                    if (hasAnimated) {
+                        drawPath();
+                        // Re-apply animation state
+                        const path = document.getElementById('career-path');
+                        path.style.strokeDashoffset = '0';
+                    }
+                }, 200);
+            });
+        });
+    </script>
+</body>
+</html>
