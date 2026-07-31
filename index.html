@@ -244,8 +244,52 @@ section { padding: 100px 0; }
 .nav-tab:hover::after { width: 80%; left: 10%; }
 .nav-tab.active::after { display: none; }
 
-/* Smooth parallax on scroll for hero photo */
-.hero-photo-wrap { transition: transform 0.1s linear; }
+/* ===== SECTION TRANSITIONS (unique per section) ===== */
+section { position: relative; }
+
+/* Overview: Slide up + scale */
+#overview { opacity: 0; transform: translateY(40px) scale(0.97); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+#overview.section-visible { opacity: 1; transform: translateY(0) scale(1); }
+
+/* AI Systems: Fade in with blur */
+#ai-systems { opacity: 0; filter: blur(8px); transition: opacity 0.9s ease, filter 0.9s ease; }
+#ai-systems.section-visible { opacity: 1; filter: blur(0); }
+
+/* Impact: Slide from left */
+#impact { opacity: 0; transform: translateX(-50px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+#impact.section-visible { opacity: 1; transform: translateX(0); }
+
+/* Research: Scale up from center */
+#research { opacity: 0; transform: scale(0.92); transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.16,1,0.3,1); }
+#research.section-visible { opacity: 1; transform: scale(1); }
+
+/* Speaking: Slide from right */
+#speaking { opacity: 0; transform: translateX(50px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+#speaking.section-visible { opacity: 1; transform: translateX(0); }
+
+/* Media: Clip reveal from top */
+#media { opacity: 0; clip-path: inset(10% 0 0 0); transition: opacity 0.8s ease, clip-path 0.8s cubic-bezier(0.16,1,0.3,1); }
+#media.section-visible { opacity: 1; clip-path: inset(0 0 0 0); }
+
+/* Leadership: Rotate in slightly */
+#leadership { opacity: 0; transform: perspective(800px) rotateX(5deg) translateY(30px); transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+#leadership.section-visible { opacity: 1; transform: perspective(800px) rotateX(0) translateY(0); }
+
+/* Career Journey: Zoom + fade */
+#career-journey { opacity: 0; transform: scale(0.95) translateY(20px); transition: opacity 0.7s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+#career-journey.section-visible { opacity: 1; transform: scale(1) translateY(0); }
+
+/* Experience: Slide up with slight rotation */
+#experience { opacity: 0; transform: perspective(800px) rotateX(-3deg) translateY(40px); transition: opacity 0.8s ease, transform 0.9s cubic-bezier(0.16,1,0.3,1); }
+#experience.section-visible { opacity: 1; transform: perspective(800px) rotateX(0) translateY(0); }
+
+/* Contact: Fade + blur dissolve */
+#contact { opacity: 0; filter: blur(6px); transform: translateY(30px); transition: opacity 0.8s ease, filter 0.7s ease, transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+#contact.section-visible { opacity: 1; filter: blur(0); transform: translateY(0); }
+
+/* Section separator glow line between sections */
+section::after { content: ''; display: block; width: 0; height: 1px; background: linear-gradient(90deg, transparent, var(--accent), transparent); margin: 0 auto; transition: width 1s ease 0.3s; opacity: 0.4; }
+section.section-visible::after { width: 200px; }
 
 /* ===== CAREER GRAPH ===== */
 .career-graph { position: relative; width: 100%; padding: 40px 0; }
@@ -1056,6 +1100,23 @@ function closeMobile() {
   }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
 
   document.querySelectorAll('.fade-up, .fade-left, .fade-right, .scale-in, .section-divider').forEach(el => observer.observe(el));
+})();
+
+// Section-level transition animations (unique per section)
+(function() {
+  const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('section-visible');
+        sectionObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -80px 0px' });
+
+  document.querySelectorAll('section[id]').forEach(s => sectionObserver.observe(s));
+  // Trigger overview immediately since it's in viewport on load
+  const overview = document.getElementById('overview');
+  if (overview) setTimeout(() => overview.classList.add('section-visible'), 200);
 })();
 
 // Animated number counter for stats
