@@ -172,6 +172,14 @@ section { padding: 100px 0; }
 
 /* ===== LEADERSHIP ===== */
 .leadership-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; max-width: 800px; margin: 0 auto; }
+
+/* ===== MEDIA & PRESS ===== */
+.media-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 16px; }
+.media-card { display: block; background: var(--card); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 22px 24px; transition: border-color 0.2s, transform 0.3s cubic-bezier(0.16,1,0.3,1), box-shadow 0.3s; }
+.media-card:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 8px 30px rgba(139,92,246,0.12); }
+.media-card .media-source { font-size: 0.72rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); margin-bottom: 8px; }
+.media-card h4 { font-size: 0.88rem; font-weight: 600; line-height: 1.5; margin-bottom: 10px; }
+.media-card .media-role { display: inline-block; padding: 3px 10px; border-radius: 9999px; font-size: 0.68rem; font-weight: 600; background: var(--accent-soft); color: var(--accent); }
 .leadership-card { background: var(--card); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 20px; text-align: center; transition: border-color 0.2s; }
 .leadership-card:hover { border-color: var(--accent); }
 .leadership-card h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 4px; }
@@ -642,6 +650,63 @@ section { padding: 100px 0; }
       </div>
     </div>
     <p class="judging-total fade-up">91+ evaluations completed</p>
+  </div>
+</section>
+
+<!-- ===== MEDIA & PRESS ===== -->
+<section id="media">
+  <div class="container">
+    <div class="section-header fade-up">
+      <h2>Featured In</h2>
+      <p>Expert commentary and thought leadership across industry publications.</p>
+    </div>
+    <div class="media-grid">
+      <a href="https://thedigitalprojectmanager.com/pmo/the-ai-skills-gap-how-organizations-and-leaders-are-closing-it/" target="_blank" rel="noopener" class="media-card fade-up stagger-1">
+        <div class="media-source">The Digital Project Manager</div>
+        <h4>The AI Skills Gap: How Organizations and Leaders Are Closing It</h4>
+        <span class="media-role">Expert Source</span>
+      </a>
+      <a href="https://thedigitalprojectmanager.com/productivity/the-rise-of-vibecoding-can-it-be-useful-for-project-managers/" target="_blank" rel="noopener" class="media-card fade-up stagger-2">
+        <div class="media-source">The Digital Project Manager</div>
+        <h4>The Rise of Vibecoding: Can It Be Useful for Project Managers?</h4>
+        <span class="media-role">Expert Source</span>
+      </a>
+      <a href="https://thedigitalprojectmanager.com/pmo/build-or-buy-the-pm-tooling-decision-in-the-age-of-ai/" target="_blank" rel="noopener" class="media-card fade-up stagger-3">
+        <div class="media-source">The Digital Project Manager</div>
+        <h4>Build or Buy: The PM Tooling Decision in the Age of AI</h4>
+        <span class="media-role">Expert Source</span>
+      </a>
+      <a href="https://thedigitalprojectmanager.com/productivity/vibecoded-projects-by-project-managers/" target="_blank" rel="noopener" class="media-card fade-up stagger-4">
+        <div class="media-source">The Digital Project Manager</div>
+        <h4>Vibecoded Projects by Project Managers</h4>
+        <span class="media-role">Expert Source</span>
+      </a>
+      <a href="https://thedigitalprojectmanager.com/productivity/ai-tools-that-replaced-manual-work/" target="_blank" rel="noopener" class="media-card fade-up stagger-5">
+        <div class="media-source">The Digital Project Manager</div>
+        <h4>AI Tools That Replaced Manual Work</h4>
+        <span class="media-role">Expert Source</span>
+      </a>
+      <a href="https://thedigitalprojectmanager.com/career/project-management-is-an-entrepreneurial-role/" target="_blank" rel="noopener" class="media-card fade-up stagger-6">
+        <div class="media-source">The Digital Project Manager</div>
+        <h4>Project Management Is an Entrepreneurial Role</h4>
+        <span class="media-role">Expert Source</span>
+      </a>
+      <a href="https://globalrecognitionawards.org/global-recognition-awards-technology-and-software-engineering-judging-panel-2026/" target="_blank" rel="noopener" class="media-card fade-up stagger-7">
+        <div class="media-source">Global Recognition Awards</div>
+        <h4>Technology &amp; Software Engineering Judging Panel 2026</h4>
+        <span class="media-role">Featured Judge</span>
+      </a>
+      <a href="https://hr.stevieawards.com/judges/judging-committees/ai-solution-provider-implementation-training/" target="_blank" rel="noopener" class="media-card fade-up stagger-8">
+        <div class="media-source">Stevie Awards</div>
+        <h4>AI Solution Provider Implementation &amp; Training Judge</h4>
+        <span class="media-role">Featured Judge</span>
+      </a>
+      <a href="https://lmdconference.com/speaker/ghonge-aniket-lawankush" target="_blank" rel="noopener" class="media-card fade-up stagger-9">
+        <div class="media-source">Last Mile Delivery Conference</div>
+        <h4>Featured Speaker — 6th Annual Conference 2026</h4>
+        <span class="media-role">Keynote Speaker</span>
+      </a>
+    </div>
   </div>
 </section>
 
