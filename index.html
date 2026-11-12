@@ -363,6 +363,29 @@ section.section-visible::after { width: 200px; }
 .mobile-nav.open { display: flex; }
 .mobile-nav a { padding: 12px 16px; border-radius: var(--radius); font-size: 0.95rem; font-weight: 500; color: var(--muted); transition: background 0.2s, color 0.2s; }
 .mobile-nav a:hover, .mobile-nav a.active { background: var(--accent-soft); color: var(--accent); }
+
+/* Live Build picker */
+button.cta-primary { border: 0; cursor: pointer; font-family: inherit; line-height: inherit; }
+.system-card .system-link { font-size: 0.72rem; font-weight: 600; color: var(--accent); }
+.system-card .system-link:hover { text-decoration: underline; }
+.lb-overlay { position: fixed; inset: 0; z-index: 2000; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(0,0,0,0.6); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
+.lb-overlay.open { display: flex; animation: lbFade 0.18s ease-out; }
+.lb-panel { position: relative; width: 100%; max-width: 560px; max-height: calc(100vh - 40px); overflow-y: auto; background: var(--bg); border: 1px solid var(--card-border); border-radius: 20px; padding: 28px 24px 24px; box-shadow: 0 24px 80px rgba(0,0,0,0.45); }
+.lb-close { position: absolute; top: 14px; right: 14px; width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; background: var(--card); border: 1px solid var(--card-border); color: var(--muted); cursor: pointer; transition: all 0.2s; }
+.lb-close:hover { color: var(--accent); border-color: var(--accent); }
+.lb-title { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.3px; padding-right: 44px; }
+.lb-sub { font-size: 0.82rem; color: var(--muted); margin: 4px 0 18px; padding-right: 44px; }
+.lb-list { display: flex; flex-direction: column; gap: 12px; }
+.lb-item { display: block; background: var(--card); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 16px 18px; transition: border-color 0.2s, transform 0.2s; cursor: pointer; text-align: left; width: 100%; font-family: inherit; color: inherit; }
+.lb-item:hover, .lb-item:focus-visible { border-color: var(--accent); transform: translateY(-2px); outline: none; }
+.lb-item-top { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 4px; }
+.lb-item-name { font-size: 0.95rem; font-weight: 700; }
+.lb-item-tag { padding: 3px 9px; border-radius: 9999px; background: var(--accent-soft); color: var(--accent); font-size: 0.68rem; font-weight: 600; white-space: nowrap; }
+.lb-item-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.55; }
+.lb-item-go { display: inline-block; margin-top: 8px; font-size: 0.75rem; font-weight: 600; color: var(--accent); }
+body.lb-lock { overflow: hidden; }
+@keyframes lbFade { from { opacity: 0; } to { opacity: 1; } }
+@media (prefers-reduced-motion: reduce) { .lb-overlay.open { animation: none; } .lb-item { transition: none; } }
 </style>
 </head>
 <body>
@@ -418,7 +441,7 @@ section.section-visible::after { width: 200px; }
         <p class="hero-subtitle">Senior Supply Chain Manager at Amazon | IEEE Senior Member | INFORMS Presenter | MassChallenge Judge | PMI Board Director</p>
         <p class="hero-role">I design and deploy production-grade AI systems that optimize enterprise-scale logistics networks — managing $1.6B in commercial agreements and 50M+ daily package movements at Amazon. Built 10 production AI systems as a single practitioner-developer without a dedicated engineering team.</p>
         <div class="hero-ctas">
-          <a href="https://slotting-app-cyan.vercel.app" target="_blank" rel="noopener" class="cta-primary">View Live Build ↗</a>
+          <button type="button" class="cta-primary" onclick="openLiveBuild()" aria-haspopup="dialog" aria-controls="liveBuildMenu">View Live Build ▾</button>
           <a href="#ai-systems" class="cta-secondary">Explore AI Systems</a>
         </div>
         <div class="social-icons">
@@ -470,7 +493,7 @@ section.section-visible::after { width: 200px; }
   <div class="container">
     <div class="section-header fade-up">
       <h2>AI Systems Portfolio</h2>
-      <p>5 production-grade AI systems designed, built, and deployed using AI-assisted development.</p>
+      <p>6 AI-built systems designed, built, and deployed using AI-assisted development.</p>
     </div>
     <div class="systems-grid">
       <div class="system-card fade-up stagger-1">
@@ -512,6 +535,16 @@ section.section-visible::after { width: 200px; }
           <span class="system-metric">18,000 SKUs in &lt;1 second · 0.1–41.9% travel reduction</span>
           <span class="system-built">Claude (Anthropic)</span>
         </div>
+        <p class="system-desc" style="margin:12px 0 0;"><a class="system-link" href="https://slotting-app-cyan.vercel.app" target="_blank" rel="noopener">Open live demo ↗</a></p>
+      </div>
+      <div class="system-card fade-up stagger-6">
+        <div class="system-name"><span>Plantline Ops</span> — Manufacturing CRM &amp; Operations</div>
+        <p class="system-desc">Manufacturing CRM and operations app with role-based access, an admin view and usage tracking. The public demo runs on made-up sample data.</p>
+        <div class="system-meta">
+          <span class="system-metric">Live demo · sample data</span>
+          <span class="system-built">Claude (Anthropic)</span>
+        </div>
+        <p class="system-desc" style="margin:12px 0 0;"><a class="system-link" href="https://mfgstartup.vercel.app" target="_blank" rel="noopener">Open live demo ↗</a></p>
       </div>
     </div>
     <p class="systems-note fade-up">All AI systems built as a single practitioner-developer — without a dedicated engineering team, using AI-assisted development (Claude for independent projects, Kiro IDE for Amazon tools).</p>
@@ -1003,6 +1036,34 @@ section.section-visible::after { width: 200px; }
   </div>
 </section>
 
+<!-- ===== LIVE BUILD PICKER ===== -->
+<div class="lb-overlay" id="liveBuildMenu" role="dialog" aria-modal="true" aria-labelledby="lbTitle" aria-hidden="true">
+  <div class="lb-panel">
+    <button type="button" class="lb-close" onclick="closeLiveBuild()" aria-label="Close menu">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <h3 class="lb-title" id="lbTitle">Choose a live build</h3>
+    <p class="lb-sub">Three public projects you can open today.</p>
+    <div class="lb-list">
+      <a class="lb-item" href="https://slotting-app-cyan.vercel.app" target="_blank" rel="noopener">
+        <div class="lb-item-top"><span class="lb-item-name">Slotting Optimizer</span><span class="lb-item-tag">Live demo</span></div>
+        <p class="lb-item-desc">Warehouse slotting tool that places SKUs across 6 competing objectives to cut pick travel.</p>
+        <span class="lb-item-go">Open app ↗</span>
+      </a>
+      <a class="lb-item" href="https://mfgstartup.vercel.app" target="_blank" rel="noopener">
+        <div class="lb-item-top"><span class="lb-item-name">Plantline Ops</span><span class="lb-item-tag">Live demo</span></div>
+        <p class="lb-item-desc">Manufacturing CRM and operations app. The demo runs on made-up sample data.</p>
+        <span class="lb-item-go">Open app ↗</span>
+      </a>
+      <button type="button" class="lb-item" onclick="closeLiveBuild()">
+        <div class="lb-item-top"><span class="lb-item-name">Personal Website</span><span class="lb-item-tag">You are here</span></div>
+        <p class="lb-item-desc">This portfolio: impact, AI systems, research, speaking and experience.</p>
+        <span class="lb-item-go">Stay on this site</span>
+      </button>
+    </div>
+  </div>
+</div>
+
 <!-- ===== FOOTER ===== -->
 <footer class="footer">
   <div class="container">
@@ -1051,6 +1112,31 @@ function toggleMobile() {
 function closeMobile() {
   document.getElementById('mobileNav').classList.remove('open');
 }
+
+// Live Build picker
+var lbReturnFocus = null;
+function openLiveBuild() {
+  var m = document.getElementById('liveBuildMenu');
+  lbReturnFocus = document.activeElement;
+  m.classList.add('open');
+  m.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('lb-lock');
+  var first = m.querySelector('.lb-item');
+  if (first) first.focus();
+}
+function closeLiveBuild() {
+  var m = document.getElementById('liveBuildMenu');
+  m.classList.remove('open');
+  m.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('lb-lock');
+  if (lbReturnFocus && lbReturnFocus.focus) lbReturnFocus.focus();
+}
+document.getElementById('liveBuildMenu').addEventListener('click', function(e) {
+  if (e.target === this) closeLiveBuild();
+});
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && document.getElementById('liveBuildMenu').classList.contains('open')) closeLiveBuild();
+});
 
 // Scroll-based active nav tab (NOT IntersectionObserver for nav)
 (function() {
