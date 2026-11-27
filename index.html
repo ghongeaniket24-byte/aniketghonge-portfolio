@@ -109,7 +109,8 @@ section { padding: 100px 0; }
 .cite-btn svg { width: 12px; height: 12px; }
 
 /* ===== HERO ===== */
-.hero { padding: 80px 0 60px; }
+.hero { padding: 80px 0 60px; background: radial-gradient(700px 320px at 15% -5%, var(--accent-soft), transparent 65%), radial-gradient(600px 300px at 90% 0%, rgba(6,182,212,0.08), transparent 65%); }
+.h1-gradient { background: linear-gradient(90deg, #8b5cf6, #06b6d4); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .hero-grid { display: grid; grid-template-columns: 1fr 300px; gap: 60px; align-items: center; }
 .hero-eyebrow { display: inline-block; font-size: 0.8rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); margin-bottom: 16px; }
 .hero-subtitle { font-size: 0.82rem; color: var(--muted); margin-bottom: 12px; line-height: 1.6; }
@@ -135,6 +136,14 @@ section { padding: 100px 0; }
 .stat-item .stat-value { font-size: 1.3rem; font-weight: 800; color: var(--accent); }
 .stat-item .stat-label { font-size: 0.7rem; color: var(--muted); margin-top: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
 
+/* ===== KEYWORD TICKER ===== */
+.ticker { overflow: hidden; border-top: 1px solid var(--card-border); border-bottom: 1px solid var(--card-border); padding: 14px 0; }
+.ticker-track { display: inline-flex; gap: 28px; white-space: nowrap; animation: tickerScroll 32s linear infinite; will-change: transform; }
+.ticker:hover .ticker-track { animation-play-state: paused; }
+.ticker-track span { font-size: 0.8rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+.ticker-track .ticker-dot { color: var(--accent); font-size: 0.55rem; align-self: center; }
+@keyframes tickerScroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
 /* ===== AI SYSTEMS GRID ===== */
 .systems-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
 .system-card { background: var(--card); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 24px; transition: border-color 0.2s, transform 0.2s; }
@@ -146,6 +155,15 @@ section { padding: 100px 0; }
 .system-card .system-metric { display: inline-block; padding: 4px 10px; background: var(--accent-soft); border-radius: 9999px; font-size: 0.72rem; font-weight: 600; color: var(--accent); }
 .system-card .system-built { font-size: 0.7rem; color: var(--muted-fg); font-style: italic; }
 .systems-note { text-align: center; margin-top: 32px; font-size: 0.85rem; color: var(--muted); font-style: italic; max-width: 800px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+
+/* Featured system card (Slotting Optimizer — live app screenshot) */
+.system-card.featured { grid-column: 1 / -1; display: grid; grid-template-columns: 1.15fr 1fr; gap: 28px; align-items: center; padding: 28px; }
+.featured-shot { display: block; border-radius: 8px; overflow: hidden; border: 1px solid var(--card-border); }
+.featured-shot img { width: 100%; display: block; transition: transform 0.4s ease; }
+.system-card.featured:hover .featured-shot img { transform: scale(1.02); }
+.featured-shot-caption { display: block; padding: 8px 12px; font-size: 0.72rem; font-weight: 600; color: var(--accent); background: var(--card); border-top: 1px solid var(--card-border); }
+.featured-link { display: inline-block; margin-top: 14px; font-size: 0.85rem; font-weight: 600; color: var(--accent); }
+.featured-link:hover { text-decoration: underline; }
 
 /* ===== IMPACT CARDS ===== */
 .impact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; }
@@ -176,7 +194,7 @@ section { padding: 100px 0; }
 
 /* ===== PUBLICATIONS ===== */
 .publications-grid { display: grid; gap: 16px; max-width: 800px; margin: 0 auto; }
-.pub-card { background: var(--card); border: 1px solid var(--card-border); border-radius: var(--radius); padding: 20px 24px; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; transition: border-color 0.2s; }
+.pub-card { background: var(--card); border: 1px solid var(--card-border); border-left: 3px solid var(--accent); border-radius: var(--radius); padding: 20px 24px; display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; transition: border-color 0.2s; }
 .pub-card:hover { border-color: var(--accent); }
 .pub-card h4 { font-size: 0.88rem; font-weight: 600; margin-bottom: 4px; line-height: 1.5; }
 .pub-card p { font-size: 0.78rem; color: var(--muted); }
@@ -218,6 +236,12 @@ section { padding: 100px 0; }
 .leadership-card:hover { border-color: var(--accent); }
 .leadership-card h4 { font-size: 0.85rem; font-weight: 700; margin-bottom: 4px; }
 .leadership-card p { font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+
+/* ===== CLOSING CTA BANNER ===== */
+.cta-banner { max-width: 800px; margin: 0 auto 48px; text-align: center; padding: 48px 32px; background: linear-gradient(135deg, var(--accent-soft), rgba(6,182,212,0.06)); border: 1px solid var(--card-border); border-radius: 16px; }
+.cta-banner h3 { font-size: clamp(1.5rem, 3.5vw, 2rem); font-weight: 800; letter-spacing: -0.5px; margin-bottom: 12px; }
+.cta-banner p { color: var(--muted); font-size: 0.95rem; max-width: 560px; margin: 0 auto 24px; }
+.cta-banner-actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
 /* ===== CONTACT ===== */
 .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; max-width: 800px; margin: 0 auto; }
@@ -298,7 +322,7 @@ section { position: relative; }
 #research.section-visible { opacity: 1; transform: scale(1); }
 
 /* Speaking: Slide from right */
-#speaking { opacity: 0; transform: translateX(50px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); }
+#speaking { opacity: 0; transform: translateX(50px); transition: opacity 0.8s cubic-bezier(0.16,1,0.3,1), transform 0.8s cubic-bezier(0.16,1,0.3,1); background: radial-gradient(900px 320px at 50% 0%, var(--accent-soft), transparent 70%); }
 #speaking.section-visible { opacity: 1; transform: translateX(0); }
 
 /* Media: Clip reveal from top */
@@ -380,6 +404,7 @@ section.section-visible::after { width: 200px; }
   .edu-cert-grid { grid-template-columns: 1fr; }
   .impact-grid { grid-template-columns: 1fr; }
   .systems-grid { grid-template-columns: 1fr; }
+  .system-card.featured { grid-template-columns: 1fr; padding: 20px; gap: 20px; }
   .pub-card { flex-direction: column; align-items: flex-start; }
   .speaking-card { flex-direction: column; align-items: flex-start; }
   .contact-grid { grid-template-columns: repeat(2, 1fr); }
@@ -450,7 +475,7 @@ section.section-visible::after { width: 200px; }
     <div class="hero-grid">
       <div class="fade-up">
         <span class="hero-eyebrow">AI-ENABLED DECISION SYSTEMS · SUPPLY CHAIN OPTIMIZATION</span>
-        <h1>Building technical infrastructure design and long-term capacity for a 3-year plan supporting 4 billion packages a year</h1>
+        <h1>Building technical infrastructure design and long-term capacity for a 3-year plan supporting <span class="h1-gradient">4 billion</span> packages a year</h1>
         <p class="hero-subtitle">Senior Supply Chain Leader at Amazon | IEEE Senior Member | INFORMS Presenter | MassChallenge Judge | Director of Mentorship Programs, PMI Orange County</p>
         <p class="hero-role">I design and deploy production-grade AI systems that optimize enterprise-scale logistics networks — supporting a business targeting $1.6B in 2026 sales and 50M+ daily package movements at Amazon. I also supported building technical infrastructure design and long-term capacity for a 3-year plan supporting 4 billion packages a year. Built 10 production AI systems as a single practitioner-developer without a dedicated engineering team.</p>
         <div class="hero-ctas">
@@ -501,6 +526,13 @@ section.section-visible::after { width: 200px; }
   </div>
 </section>
 
+<!-- ===== KEYWORD TICKER ===== -->
+<div class="ticker">
+  <div class="ticker-track">
+    <span>Agentic AI</span><span class="ticker-dot">◆</span><span>Supply Chain Optimization</span><span class="ticker-dot">◆</span><span>Multi-Objective Optimization</span><span class="ticker-dot">◆</span><span>Forecasting</span><span class="ticker-dot">◆</span><span>Capacity Planning</span><span class="ticker-dot">◆</span><span>Warehouse Slotting</span><span class="ticker-dot">◆</span><span>Decision Systems</span><span class="ticker-dot">◆</span><span>Operations Research</span><span class="ticker-dot">◆</span><span>Machine Learning</span><span class="ticker-dot">◆</span><span>LLMs &amp; RAG</span><span class="ticker-dot">◆</span><span>Agentic AI</span><span class="ticker-dot">◆</span><span>Supply Chain Optimization</span><span class="ticker-dot">◆</span><span>Multi-Objective Optimization</span><span class="ticker-dot">◆</span><span>Forecasting</span><span class="ticker-dot">◆</span><span>Capacity Planning</span><span class="ticker-dot">◆</span><span>Warehouse Slotting</span><span class="ticker-dot">◆</span><span>Decision Systems</span><span class="ticker-dot">◆</span><span>Operations Research</span><span class="ticker-dot">◆</span><span>Machine Learning</span><span class="ticker-dot">◆</span><span>LLMs &amp; RAG</span><span class="ticker-dot">◆</span>
+  </div>
+</div>
+
 <!-- ===== AI SYSTEMS PORTFOLIO ===== -->
 <section id="ai-systems">
   <div class="container">
@@ -541,12 +573,19 @@ section.section-visible::after { width: 200px; }
           <span class="system-built">Kiro IDE</span>
         </div>
       </div>
-      <div class="system-card fade-up stagger-5">
-        <div class="system-name"><span>Slotting Optimizer</span> — Warehouse Optimization</div>
-        <p class="system-desc">6-objective warehouse slotting optimization validated on 7 real-world datasets.</p>
-        <div class="system-meta">
-          <span class="system-metric">18,000 SKUs in &lt;1 second · 0.1–41.9% travel reduction</span>
-          <span class="system-built">Claude (Anthropic)</span>
+      <div class="system-card featured fade-up stagger-5">
+        <a href="https://slotting-app-cyan.vercel.app" target="_blank" rel="noopener" class="featured-shot" aria-label="Open the live Slotting Optimizer app">
+          <img src="slotting-app-preview.jpg" alt="Slotting Optimizer app — warehouse slotting simulator with operation-size tiers" loading="lazy">
+          <span class="featured-shot-caption">Live app — click to try it &#8599;</span>
+        </a>
+        <div class="featured-body">
+          <div class="system-name"><span>Slotting Optimizer</span> — Warehouse Optimization</div>
+          <p class="system-desc">6-objective warehouse slotting optimization validated on 7 real-world datasets. Compare generic putaway against demand-driven slotting and see the travel-cost reduction for your operation size.</p>
+          <div class="system-meta">
+            <span class="system-metric">18,000 SKUs in &lt;1 second · 0.1–41.9% travel reduction</span>
+            <span class="system-built">Claude (Anthropic)</span>
+          </div>
+          <a href="https://slotting-app-cyan.vercel.app" target="_blank" rel="noopener" class="featured-link">Open the live app &#8599;</a>
         </div>
       </div>
     </div>
@@ -1047,6 +1086,14 @@ section.section-visible::after { width: 200px; }
     <div class="section-header fade-up">
       <h2>Contact</h2>
       <p>Open to speaking engagements, research collaboration, and advisory opportunities.</p>
+    </div>
+    <div class="cta-banner fade-up">
+      <h3>Let's build something that ships.</h3>
+      <p>I build production AI systems and I talk about how they actually get built — keynotes, panels, and roundtables.</p>
+      <div class="cta-banner-actions">
+        <a href="mailto:ghongeaniket24@gmail.com" class="cta-primary">Email me &#8599;</a>
+        <a href="https://linkedin.com/in/aniketghonge" target="_blank" rel="noopener" class="cta-secondary">Connect on LinkedIn</a>
+      </div>
     </div>
     <div class="contact-grid">
       <a href="mailto:ghongeaniket24@gmail.com" class="contact-item fade-up stagger-1">
